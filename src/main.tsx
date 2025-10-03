@@ -1,5 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { SWRConfig } from "swr";
+import { fetcher } from "./common/utils/fetcher.ts";
 import App from "./App.tsx";
 
 async function enableMocking() {
@@ -17,7 +19,15 @@ async function enableMocking() {
 enableMocking().then(() => {
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <App />
+      <SWRConfig
+        value={{
+          fetcher,
+          revalidateOnFocus: false,
+          shouldRetryOnError: false,
+        }}
+      >
+        <App />
+      </SWRConfig>
     </StrictMode>
   );
 });
