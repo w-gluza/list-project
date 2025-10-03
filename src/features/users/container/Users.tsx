@@ -1,40 +1,35 @@
 import { useState } from "react";
-import UserForm from "../components/user-form/UserForm";
 import UsersList from "../components/users-list/UsersList";
+import UserFormModal from "../components/user-form-modal/UserFormModal";
 import type { User } from "../types/user";
 
-const Users = () => {
-  const [editingUser, setEditingUser] = useState<User | null>(null);
-  const [isFormOpen, setFormOpen] = useState(false);
+export default function Users() {
+  const [open, setOpen] = useState(false);
+  const [editingId, setEditingId] = useState<string | undefined>(undefined);
 
   const handleEditUser = (user: User) => {
-    setEditingUser(user);
-    setFormOpen(true);
+    setEditingId(user.id);
+    setOpen(true);
   };
 
   const handleCreateUser = () => {
-    setEditingUser(null);
-    setFormOpen(true);
+    setEditingId(undefined);
+    setOpen(true);
   };
 
   return (
     <div>
       <UsersList onEditUser={handleEditUser} />
-      <button onClick={handleCreateUser}>Add User</button>
-      <br />
-      <br />
-      <br />
-      {/* TODO: Needs to be in a modal */}
-      {isFormOpen && (
-        <div>
-          <UserForm
-            mode={editingUser ? "edit" : "create"}
-            initialValues={editingUser ?? undefined}
-            onClose={() => setFormOpen(false)}
-          />
-        </div>
-      )}
+
+      <button onClick={handleCreateUser} style={{ marginTop: 16 }}>
+        Add User
+      </button>
+
+      <UserFormModal
+        open={open}
+        userId={editingId}
+        onClose={() => setOpen(false)}
+      />
     </div>
   );
-};
-export default Users;
+}
