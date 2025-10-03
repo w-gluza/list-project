@@ -3,30 +3,53 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { mutate } from "swr";
 import { userSchema, type UserFormValues } from "../../validation/userSchema";
 import { usePost } from "../../../../common/methods/usePost";
+import { usePatch } from "../../../../common/methods/usePatch";
 import type { User } from "../../types/user";
 
-export default function UserForm() {
-  const { execute: createUser, isLoading } = usePost<UserFormValues, User>();
+interface UserFormProps {
+  mode: "create" | "edit";
+  initialValues?: Partial<UserFormValues> & { id: string };
+  onClose: () => void;
+}
+
+export default function UserForm({
+  mode,
+  initialValues,
+  onClose,
+}: UserFormProps) {
+  const { execute: createUser, isLoading: isCreating } = usePost<
+    UserFormValues,
+    User
+  >();
+  const { execute: updateUser, isLoading: isEditing } = usePatch<
+    UserFormValues,
+    User
+  >();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
     reset,
+    formState: { errors, isSubmitting, isValid },
   } = useForm<UserFormValues>({
     resolver: yupResolver(userSchema),
     mode: "onChange",
+    defaultValues: initialValues,
   });
 
   const onSubmit = async (values: UserFormValues) => {
     const API_URL = "/api/users";
     try {
-      await createUser(API_URL, values);
+      if (mode === "create") {
+        await createUser(API_URL, values);
+      } else {
+        await updateUser(`${API_URL}/${initialValues?.id}`, values);
+      }
       await mutate(API_URL);
       reset();
+      onClose();
     } catch (e) {
-      // FIXME: use better error handling (toast)
-      alert(`Failed to create user: ${(e as Error).message}`);
+      alert(`Failed: ${(e as Error).message}`);
     }
   };
 
@@ -95,8 +118,11 @@ export default function UserForm() {
       </label>
 
       <div style={{ display: "flex", gap: 8 }}>
-        <button type="submit" disabled={isSubmitting || !isValid || isLoading}>
-          Create
+        <button
+          type="submit"
+          disabled={isSubmitting || !isValid || isCreating || isEditing}
+        >
+          {mode === "create" ? "Create" : "Save"}
         </button>
       </div>
     </form>

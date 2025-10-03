@@ -1,7 +1,11 @@
 import useSWR from "swr";
 import type { User } from "../../types/user";
 
-export default function UsersList() {
+type Props = {
+  onEditUser: (user: User) => void;
+};
+
+export default function UsersList({ onEditUser }: Props) {
   const { data: users, error, isLoading } = useSWR<User[]>("/api/users");
 
   if (error) return <p style={{ color: "red" }}>Failed to load users.</p>;
@@ -15,6 +19,7 @@ export default function UsersList() {
           <th>LAST NAME</th>
           <th>AGE</th>
           <th>COUNTRY</th>
+          <th>ACTIONS</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +29,9 @@ export default function UsersList() {
             <td>{u.lastName}</td>
             <td>{u.age}</td>
             <td>{u.country}</td>
+            <td>
+              <button onClick={() => onEditUser(u)}>Edit</button>
+            </td>
           </tr>
         ))}
       </tbody>

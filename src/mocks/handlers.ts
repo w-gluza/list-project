@@ -1,4 +1,5 @@
 import { listUsers } from "./http/listUsers";
 import { createUser } from "./http/createUser";
+import { updateUser } from "./http/updateUser";
 
-export const handlers = [listUsers, createUser];
+export const handlers = [listUsers, createUser, updateUser];

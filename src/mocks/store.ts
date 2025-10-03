@@ -4,7 +4,7 @@ export const USERS: User[] = [
   {
     id: "3f6c9b2a-1d34-4e5b-9a70-0f8c2d7b1a5c",
     country: "UK",
-    firstName: "Adam",
+    firstName: "James",
     lastName: "Lovelace",
     age: 30,
   },
