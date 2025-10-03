@@ -1,10 +1,5 @@
 import useSWR from "swr";
-
-type User = {
-  id: string;
-  name: string;
-  email: string;
-};
+import type { User } from "../../types/user";
 
 export default function UsersList() {
   const { data: users, error, isLoading } = useSWR<User[]>("/api/users");
@@ -16,17 +11,19 @@ export default function UsersList() {
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>NAME</th>
-          <th>EMAIL</th>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>AGE</th>
+          <th>COUNTRY</th>
         </tr>
       </thead>
       <tbody>
         {(users ?? []).map((u) => (
           <tr key={u.id}>
-            <td>{u.id}</td>
-            <td>{u.name}</td>
-            <td>{u.email}</td>
+            <td>{u.firstName}</td>
+            <td>{u.lastName}</td>
+            <td>{u.age}</td>
+            <td>{u.country}</td>
           </tr>
         ))}
       </tbody>

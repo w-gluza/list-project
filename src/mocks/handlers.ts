@@ -1,10 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { listUsers } from "./http/listUsers";
+import { createUser } from "./http/createUser";
 
-export const handlers = [
-  http.get("/api/users", () =>
-    HttpResponse.json([
-      { id: "1", name: "Adam Lovelace", email: "adam@example.com" },
-      { id: "2", name: "Grace Hopper", email: "grace@example.com" },
-    ])
-  ),
-];
+export const handlers = [listUsers, createUser];
