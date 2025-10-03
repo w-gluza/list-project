@@ -1,0 +1,10 @@
+import { http, HttpResponse } from "msw";
+
+export const handlers = [
+  http.get("/api/users", () =>
+    HttpResponse.json([
+      { id: "1", name: "Adam Lovelace", email: "adam@example.com" },
+      { id: "2", name: "Grace Hopper", email: "grace@example.com" },
+    ])
+  ),
+];
