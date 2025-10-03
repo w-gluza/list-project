@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import type { User } from "../../types/user";
+import { Button } from "../../../../common/components";
 
 type Props = {
   onEditUser: (user: User) => void;
@@ -30,7 +31,13 @@ export default function UsersList({ onEditUser }: Props) {
             <td>{u.age}</td>
             <td>{u.country}</td>
             <td>
-              <button onClick={() => onEditUser(u)}>Edit</button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => onEditUser(u)}
+              >
+                Edit
+              </Button>
             </td>
           </tr>
         ))}

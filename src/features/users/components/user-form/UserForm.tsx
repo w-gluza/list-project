@@ -5,6 +5,7 @@ import { userSchema, type UserFormValues } from "../../validation/userSchema";
 import { usePost } from "../../../../common/methods/usePost";
 import { usePatch } from "../../../../common/methods/usePatch";
 import type { User } from "../../types/user";
+import { Button } from "../../../../common/components";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -118,12 +119,16 @@ export default function UserForm({
       </label>
 
       <div style={{ display: "flex", gap: 8 }}>
-        <button
-          type="submit"
+        <Button variant="secondary" size="lg" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button
+          size="lg"
           disabled={isSubmitting || !isValid || isCreating || isEditing}
+          type="submit"
         >
           {mode === "create" ? "Create" : "Save"}
-        </button>
+        </Button>
       </div>
     </form>
   );

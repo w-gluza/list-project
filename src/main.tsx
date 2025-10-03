@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { SWRConfig } from "swr";
 import { fetcher } from "./common/utils/fetcher.ts";
+import { globalStyles } from "./common/styles/stitches.config.ts";
 import App from "./App.tsx";
 
 async function enableMocking() {
@@ -15,6 +16,8 @@ async function enableMocking() {
     serviceWorker: { url: `${import.meta.env.BASE_URL}mockServiceWorker.js` },
   });
 }
+
+globalStyles();
 
 enableMocking().then(() => {
   createRoot(document.getElementById("root")!).render(
