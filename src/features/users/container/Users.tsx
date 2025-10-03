@@ -7,6 +7,9 @@ const Users = () => {
       <UsersList />
 
       {/* TODO: Needs to be in a modal */}
+      <br />
+      <br />
+      <br />
       <UserForm />
     </div>
   );
