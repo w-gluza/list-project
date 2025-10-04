@@ -1,6 +1,15 @@
 import useSWR from "swr";
 import type { User } from "../../types/user";
-import { Button } from "../../../../common/components";
+import {
+  Button,
+  Table,
+  TableHead,
+  TableBody,
+  TableWrapper,
+  TableRow,
+  TableHeaderCell,
+  TableCell,
+} from "../../../../common/components";
 
 type Props = {
   onEditUser: (user: User) => void;
@@ -13,35 +22,38 @@ export default function UsersList({ onEditUser }: Props) {
   if (isLoading) return <p>Please wait. Loading users...</p>;
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>FIRST NAME</th>
-          <th>LAST NAME</th>
-          <th>AGE</th>
-          <th>COUNTRY</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {(users ?? []).map((u) => (
-          <tr key={u.id}>
-            <td>{u.firstName}</td>
-            <td>{u.lastName}</td>
-            <td>{u.age}</td>
-            <td>{u.country}</td>
-            <td>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => onEditUser(u)}
-              >
-                Edit
-              </Button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <TableWrapper>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableHeaderCell>First Name</TableHeaderCell>
+            <TableHeaderCell>Last Name</TableHeaderCell>
+            <TableHeaderCell>Age</TableHeaderCell>
+            <TableHeaderCell>Country</TableHeaderCell>
+            <TableHeaderCell>Actions</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {(users ?? []).map((u) => (
+            <TableRow key={u.id}>
+              <TableCell>{u.firstName}</TableCell>
+              <TableCell>{u.lastName}</TableCell>
+              <TableCell>{u.age}</TableCell>
+              <TableCell>{u.country}</TableCell>
+              <TableCell>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => onEditUser(u)}
+                >
+                  Edit
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableWrapper>
   );
 }
