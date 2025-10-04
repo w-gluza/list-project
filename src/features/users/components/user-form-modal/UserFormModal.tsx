@@ -3,7 +3,7 @@ import { fetcher } from "../../../../common/utils/fetcher";
 import type { User } from "../../types/user";
 import type { UserFormValues } from "../../validation/userSchema";
 import UserForm from "../user-form/UserForm";
-import { Modal } from "../../../../common/components/Modal/Modal";
+import { Modal } from "../../../../common/components";
 
 function toFormValues(u: User): UserFormValues {
   return {

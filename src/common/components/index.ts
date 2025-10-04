@@ -1,4 +1,4 @@
-export { Button } from "./Button/Button";
-export { Input } from "./Input/Input";
-export { Select } from "./Select/Select";
-export { Modal } from "./Modal/Modal";
+export { Button } from "./button/Button";
+export { Input } from "./input/Input";
+export { Select } from "./select/Select";
+export { Modal } from "./modal/Modal";
