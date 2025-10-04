@@ -1,11 +1,12 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { mutate } from "swr";
 import { userSchema, type UserFormValues } from "../../validation/userSchema";
 import { usePost } from "../../../../common/methods/usePost";
 import { usePatch } from "../../../../common/methods/usePatch";
 import type { User } from "../../types/user";
-import { Button } from "../../../../common/components";
+import { Button, Input } from "../../../../common/components";
+import { Select } from "../../../../common/components";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -31,6 +32,7 @@ export default function UserForm({
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isSubmitting, isValid },
   } = useForm<UserFormValues>({
     resolver: yupResolver(userSchema),
@@ -56,70 +58,57 @@ export default function UserForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <div>Country</div>
-        <select
-          {...register("country")}
-          disabled={isSubmitting}
-          defaultValue=""
-        >
-          <option value="" disabled>
-            Select country…
-          </option>
-          <option value="UK">UK</option>
-          <option value="Ireland">Ireland</option>
-          <option value="US">US</option>
-          <option value="Other">Other</option>
-        </select>
-        {errors.country && (
-          <small style={{ color: "red" }}>{errors.country.message}</small>
+      <Controller
+        name="country"
+        control={control}
+        render={({ field, fieldState }) => (
+          <Select
+            label="Country"
+            placeholder="Select country…"
+            value={field.value ?? ""}
+            onValueChange={field.onChange}
+            disabled={isSubmitting}
+            error={fieldState.error?.message}
+            items={[
+              { value: "UK", label: "UK" },
+              { value: "Ireland", label: "Ireland" },
+              { value: "US", label: "US" },
+              { value: "Other", label: "Other" },
+            ]}
+          />
         )}
-      </label>
+      />
 
-      <label>
-        <div>First name</div>
-        <input
-          type="text"
-          {...register("firstName")}
-          placeholder="First name"
-          autoComplete="given-name"
-          disabled={isSubmitting}
-        />
-        {errors.firstName && (
-          <small style={{ color: "red" }}>{errors.firstName.message}</small>
-        )}
-      </label>
+      <Input
+        label="First name"
+        placeholder="First name"
+        autoComplete="given-name"
+        disabled={isSubmitting}
+        error={errors.firstName?.message}
+        {...register("firstName")}
+      />
 
-      <label>
-        <div>Last name</div>
-        <input
-          type="text"
-          {...register("lastName")}
-          placeholder="Last name"
-          autoComplete="family-name"
-          disabled={isSubmitting}
-        />
-        {errors.lastName && (
-          <small style={{ color: "red" }}>{errors.lastName.message}</small>
-        )}
-      </label>
+      <Input
+        label="Last name"
+        placeholder="Last name"
+        autoComplete="family-name"
+        disabled={isSubmitting}
+        error={errors.lastName?.message}
+        {...register("lastName")}
+      />
 
-      <label>
-        <div>Age</div>
-        <input
-          type="number"
-          inputMode="numeric"
-          placeholder="Age"
-          disabled={isSubmitting}
-          {...register("age", { valueAsNumber: true })}
-        />
-        {errors.age && (
-          <small style={{ color: "red" }}>{errors.age.message}</small>
-        )}
-      </label>
+      <Input
+        type="number"
+        inputMode="numeric"
+        label="Age"
+        placeholder="Age"
+        disabled={isSubmitting}
+        error={errors.age?.message}
+        {...register("age", { valueAsNumber: true })}
+      />
 
       <div style={{ display: "flex", gap: 8 }}>
-        <Button variant="secondary" size="lg" onClick={onClose}>
+        <Button variant="secondary" size="lg" type="button" onClick={onClose}>
           Cancel
         </Button>
         <Button
