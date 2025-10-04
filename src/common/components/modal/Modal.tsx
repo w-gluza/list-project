@@ -7,8 +7,10 @@ export interface ModalProps {
   open: boolean;
   /** Callback when modal open state changes. */
   onOpenChange: (open: boolean) => void;
-  /** Optional modal title. */
-  title?: string;
+  /** Modal title. */
+  title: string;
+  /** Short accessible description for the modal content. */
+  ariaDescription: string;
   /** Modal content. */
   children: ReactNode;
 }
@@ -38,6 +40,18 @@ const Title = styled(Dialog.Title, {
   color: "$black",
 });
 
+const VisuallyHidden = styled(Dialog.Description, {
+  position: "absolute",
+  width: "1px",
+  height: "1px",
+  padding: 0,
+  margin: "-1px",
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+});
+
 const CloseX = styled(Dialog.Close, {
   all: "unset",
   position: "absolute",
@@ -50,15 +64,22 @@ const CloseX = styled(Dialog.Close, {
   "&:hover": { color: "$black" },
 });
 
-export const Modal = ({ open, onOpenChange, title, children }: ModalProps) => {
+export const Modal = ({
+  open,
+  onOpenChange,
+  title,
+  ariaDescription,
+  children,
+}: ModalProps) => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Overlay />
         <Content>
-          {title && <Title>{title}</Title>}
+          <Title>{title}</Title>
+          <VisuallyHidden>{ariaDescription}</VisuallyHidden>
           <CloseX aria-label="Close">✕</CloseX>
-          <div style={{ marginTop: title ? 12 : 0 }}>{children}</div>
+          <div style={{ marginTop: 12 }}>{children}</div>
         </Content>
       </Dialog.Portal>
     </Dialog.Root>

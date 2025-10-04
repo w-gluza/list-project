@@ -43,6 +43,11 @@ export default function UserFormModal({
       open={open}
       onOpenChange={(o) => !o && onClose()}
       title={mode === "create" ? "Add user" : "Edit user"}
+      ariaDescription={
+        mode === "create"
+          ? "Fill out the form to create a new user."
+          : "Update the information for the existing user."
+      }
     >
       {mode === "edit" && isLoading && <p>Loading…</p>}
       {mode === "edit" && error && (

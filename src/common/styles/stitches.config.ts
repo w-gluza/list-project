@@ -48,7 +48,6 @@ export const globalStyles = globalCss({
   "input, textarea, button, select": {
     background: "none",
     border: "none",
-    outline: "none",
     fontFamily: "inherit",
     fontSize: "inherit",
     color: "inherit",

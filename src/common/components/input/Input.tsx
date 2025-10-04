@@ -19,7 +19,6 @@ const Wrapper = styled("label", { display: "grid", gap: 6 });
 
 const Row = styled("div", {
   display: "flex",
-  alignItems: "baseline",
   justifyContent: "space-between",
 });
 

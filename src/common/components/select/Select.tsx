@@ -2,7 +2,7 @@ import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { styled } from "../../styles/stitches.config";
 import type { CSS } from "@stitches/react";
-import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
+import { TriangleDownIcon, CheckIcon } from "@radix-ui/react-icons";
 
 export interface SelectProps {
   /** Optional label text displayed above the select. */
@@ -33,7 +33,6 @@ const Wrapper = styled("label", { display: "grid", gap: 6 });
 
 const Row = styled("div", {
   display: "flex",
-  alignItems: "baseline",
   justifyContent: "space-between",
 });
 
@@ -185,7 +184,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
           >
             <SelectPrimitive.Value placeholder={placeholder} />
             <SelectPrimitive.Icon>
-              <ChevronDownIcon />
+              <TriangleDownIcon />
             </SelectPrimitive.Icon>
           </Trigger>
 
