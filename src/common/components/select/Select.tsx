@@ -85,9 +85,14 @@ const Content = styled(SelectPrimitive.Content, {
   border: "1px solid $surface3",
   borderRadius: 8,
   overflow: "hidden",
+  minWidth: "var(--radix-select-trigger-width)",
+  width: "var(--radix-select-trigger-width)",
 });
 
-const Viewport = styled(SelectPrimitive.Viewport, { padding: 4 });
+const Viewport = styled(SelectPrimitive.Viewport, {
+  padding: 4,
+  width: "100%",
+});
 
 const Item = styled(SelectPrimitive.Item, {
   fontSize: 14,
@@ -99,14 +104,22 @@ const Item = styled(SelectPrimitive.Item, {
   padding: "0 10px",
   userSelect: "none",
   cursor: "pointer",
+  width: "100%",
+  position: "relative",
 
   "&[data-disabled='true']": {
     opacity: 0.5,
     pointerEvents: "none",
   },
 
+  "&:hover": {
+    backgroundColor: "$accent",
+    color: "$white",
+  },
+
   "&[data-highlighted='true']": {
-    backgroundColor: "$surface2",
+    backgroundColor: "$accent",
+    color: "$white",
   },
 });
 
