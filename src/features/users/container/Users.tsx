@@ -3,6 +3,7 @@ import { Button, Header, Heading, Main } from "../../../common/components";
 import UsersList from "../components/users-list/UsersList";
 import UserFormModal from "../components/user-form-modal/UserFormModal";
 import type { User } from "../types/user";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 export default function Users() {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Users() {
     <>
       <Header>
         <Heading level={1}>User List</Heading>
-        <Button onClick={handleCreateUser} rounded="lg">
+        <Button onClick={handleCreateUser} rounded="lg" icon={<PlusIcon />}>
           Add User
         </Button>
       </Header>

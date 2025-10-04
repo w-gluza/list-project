@@ -4,7 +4,11 @@ import { styled } from "../../styles/stitches.config";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Button content (text or icon). */
-  children: ReactNode;
+  children?: ReactNode;
+  /** Optional icon element. */
+  icon?: ReactNode;
+  /** Icon position relative to children. */
+  iconPosition?: "start" | "end";
   /** Visual style variant: : "primary" (black) or "secondary" (white w/ border). */
   variant?: "primary" | "secondary";
   /** Size: "lg"=48px, "md"=40px, "sm"=32px. */
@@ -23,6 +27,7 @@ const StyledButton = styled("button", {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
+  gap: "8px",
   fontWeight: 700,
   cursor: "pointer",
   lineHeight: 1,
@@ -75,10 +80,18 @@ const StyledButton = styled("button", {
   },
 });
 
+const IconSlot = styled("span", {
+  display: "inline-flex",
+  alignItems: "center",
+  lineHeight: 0,
+});
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
+      icon,
+      iconPosition = "start",
       variant = "primary",
       size = "md",
       rounded = "sm",
@@ -106,7 +119,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={className}
         {...props}
       >
+        {icon && iconPosition === "start" && (
+          <IconSlot aria-hidden="true">{icon}</IconSlot>
+        )}
         {children}
+        {icon && iconPosition === "end" && (
+          <IconSlot aria-hidden="true">{icon}</IconSlot>
+        )}
       </StyledButton>
     );
   }
