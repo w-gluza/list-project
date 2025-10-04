@@ -1,11 +1,12 @@
 import { type ReactNode } from "react";
+import type { CSS } from "@stitches/react";
 import { styled } from "../../../styles/stitches.config";
 
 export interface PageContainerProps {
   /** Content to render inside the container. */
   children: ReactNode;
-  /** Extra CSS class name(s). */
-  className?: string;
+  /** Stitches CSS object for inline overrides. */
+  css?: CSS;
 }
 
 const Root = styled("div", {
@@ -15,8 +16,8 @@ const Root = styled("div", {
   padding: "20px 16px",
 });
 
-export const PageContainer = ({ children, className }: PageContainerProps) => {
-  return <Root className={className}>{children}</Root>;
+export const PageContainer = ({ children, css }: PageContainerProps) => {
+  return <Root css={css}>{children}</Root>;
 };
 
 PageContainer.displayName = "PageContainer";

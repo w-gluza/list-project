@@ -1,4 +1,5 @@
 import type { ElementType, JSX, ReactNode } from "react";
+import type { CSS } from "@stitches/react";
 import { styled } from "../../styles/stitches.config";
 
 export interface HeadingProps {
@@ -6,8 +7,8 @@ export interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Heading content. */
   children: ReactNode;
-  /** Extra CSS class name(s). */
-  className?: string;
+  /** Stitches CSS object for inline overrides. */
+  css?: CSS;
 }
 
 const Root = styled("h2", {
@@ -26,11 +27,11 @@ const Root = styled("h2", {
   },
 });
 
-export const Heading = ({ level = 2, children, className }: HeadingProps) => {
+export const Heading = ({ level = 2, children, css }: HeadingProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements as ElementType;
 
   return (
-    <Root as={Tag} level={level} className={className}>
+    <Root as={Tag} level={level} css={css}>
       {children}
     </Root>
   );

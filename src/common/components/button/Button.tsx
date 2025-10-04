@@ -1,4 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import type { CSS } from "@stitches/react";
 import { styled } from "../../styles/stitches.config";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,8 +15,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   /** Test id for queries in tests. */
   dataTestId?: string;
-  /** Extra CSS class name(s). */
-  className?: string;
+  /** Stitches CSS object for inline overrides. */
+  css?: CSS;
 }
 
 const StyledButton = styled("button", {

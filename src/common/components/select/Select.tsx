@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { styled } from "../../styles/stitches.config";
+import type { CSS } from "@stitches/react";
 import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
 
-/** Props for the Select component. */
 export interface SelectProps {
   /** Optional label text displayed above the select. */
   label?: string;
@@ -21,8 +21,8 @@ export interface SelectProps {
   items: Array<{ value: string; label: string; disabled?: boolean }>;
   /** Disabled state. */
   disabled?: boolean;
-  /** Extra CSS class name(s). */
-  className?: string;
+  /** Stitches CSS object for inline overrides. */
+  css?: CSS;
   /** Optional id for the trigger (auto-generated if omitted). */
   id?: string;
   /** Optional test id. */
@@ -45,7 +45,7 @@ const LabelEl = styled("div", {
 
 const Message = styled("span", {
   fontSize: 12,
-  minHeight: 16, // keeps layout consistent even when empty
+  minHeight: 16,
   lineHeight: 1.3,
 });
 
@@ -124,7 +124,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
       onValueChange,
       items,
       disabled,
-      className,
+      css,
       id,
       dataTestId,
     },
@@ -137,7 +137,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
     const message = error ?? helperText ?? "";
 
     return (
-      <Wrapper className={className}>
+      <Wrapper css={css}>
         {(label || message) && (
           <Row>
             {label ? (

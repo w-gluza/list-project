@@ -1,4 +1,5 @@
 import { type InputHTMLAttributes, forwardRef, useId } from "react";
+import type { CSS } from "@stitches/react";
 import { styled } from "../../styles/stitches.config";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -10,8 +11,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
   /** Test id for queries in tests. */
   dataTestId?: string;
-  /** Extra CSS class name(s). */
-  className?: string;
+  /** Stitches CSS object for inline overrides. */
+  css?: CSS;
 }
 
 const Wrapper = styled("label", { display: "grid", gap: 6 });
@@ -30,7 +31,7 @@ const LabelEl = styled("div", {
 
 const Message = styled("span", {
   fontSize: 12,
-  minHeight: 16, // keeps layout consistent even when empty
+  minHeight: 16,
   lineHeight: 1.3,
 });
 
