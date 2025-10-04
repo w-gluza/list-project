@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Header, Heading, Main } from "../../../common/components";
 import UsersList from "../components/users-list/UsersList";
 import UserFormModal from "../components/user-form-modal/UserFormModal";
 import type { User } from "../types/user";
@@ -18,18 +19,21 @@ export default function Users() {
   };
 
   return (
-    <div>
-      <UsersList onEditUser={handleEditUser} />
-
-      <button onClick={handleCreateUser} style={{ marginTop: 16 }}>
-        Add User
-      </button>
-
+    <>
+      <Header>
+        <Heading level={1}>User List</Heading>
+        <Button onClick={handleCreateUser} rounded="lg">
+          Add User
+        </Button>
+      </Header>
+      <Main>
+        <UsersList onEditUser={handleEditUser} />
+      </Main>
       <UserFormModal
         open={open}
         userId={editingId}
         onClose={() => setOpen(false)}
       />
-    </div>
+    </>
   );
 }
