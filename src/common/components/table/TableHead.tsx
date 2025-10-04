@@ -10,7 +10,7 @@ interface TableHeadProps {
 }
 
 const Root = styled("thead", {
-  borderBottom: "1px solid $gray200",
+  borderBottom: "1px solid $surface3",
 
   "&:last-child": {
     borderBottom: "none",

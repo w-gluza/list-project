@@ -10,7 +10,7 @@ interface TableRowProps {
 }
 
 const Root = styled("tr", {
-  borderBottom: "1px solid $gray200",
+  borderBottom: "1px solid $surface3",
 
   "&:last-child": {
     borderBottom: "none",

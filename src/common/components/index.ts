@@ -1,4 +1,5 @@
 export { Button } from "./button/Button";
+export { Form } from "./form/Form";
 export { Header } from "./layout/header/Header";
 export { Heading } from "./heading/Heading";
 export { Input } from "./input/Input";

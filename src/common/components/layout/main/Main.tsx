@@ -11,7 +11,7 @@ export interface MainProps {
 
 const Root = styled("main", {
   width: "100%",
-  padding: "20px 16px",
+  padding: "40px 0px",
 });
 
 export const Main = ({ children, css }: MainProps) => {

@@ -5,8 +5,7 @@ import { userSchema, type UserFormValues } from "../../validation/userSchema";
 import { usePost } from "../../../../common/methods/usePost";
 import { usePatch } from "../../../../common/methods/usePatch";
 import type { User } from "../../types/user";
-import { Button, Input } from "../../../../common/components";
-import { Select } from "../../../../common/components";
+import { Button, Input, Form, Select } from "../../../../common/components";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -57,7 +56,7 @@ export default function UserForm({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name="country"
         control={control}
@@ -107,7 +106,14 @@ export default function UserForm({
         {...register("age", { valueAsNumber: true })}
       />
 
-      <div style={{ display: "flex", gap: 8 }}>
+      <div
+        style={{
+          display: "grid",
+          gap: 8,
+          gridTemplateColumns: "1fr 3fr",
+          paddingTop: 8,
+        }}
+      >
         <Button variant="secondary" size="lg" type="button" onClick={onClose}>
           Cancel
         </Button>
@@ -119,6 +125,6 @@ export default function UserForm({
           {mode === "create" ? "Create" : "Save"}
         </Button>
       </div>
-    </form>
+    </Form>
   );
 }
