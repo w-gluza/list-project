@@ -16,10 +16,7 @@ type Props = {
 };
 
 export default function UsersList({ onEditUser }: Props) {
-  const { data: users, error, isLoading } = useSWR<User[]>("/api/users");
-
-  if (error) return <p style={{ color: "$danger" }}>Failed to load users.</p>;
-  if (isLoading) return <p>Please wait. Loading users...</p>;
+  const { data: users, isLoading } = useSWR<User[]>("/api/users");
 
   return (
     <TableWrapper>
@@ -34,7 +31,11 @@ export default function UsersList({ onEditUser }: Props) {
           </TableRow>
         </TableHead>
 
-        <TableBody>
+        <TableBody
+          isLoading={isLoading}
+          isEmpty={!isLoading && users?.length === 0}
+          colSpan={5}
+        >
           {(users ?? []).map((u) => (
             <TableRow key={u.id}>
               <TableCell>{u.firstName}</TableCell>
