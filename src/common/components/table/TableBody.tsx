@@ -30,7 +30,9 @@ export const TableBody = ({
     return (
       <tbody>
         <tr>
-          <MessageCell colSpan={colSpan}>Loading, please wait…</MessageCell>
+          <MessageCell colSpan={colSpan} role="status" aria-live="polite">
+            Loading, please wait…
+          </MessageCell>
         </tr>
       </tbody>
     );
@@ -40,7 +42,9 @@ export const TableBody = ({
     return (
       <tbody>
         <tr>
-          <MessageCell colSpan={colSpan}>No results found.</MessageCell>
+          <MessageCell colSpan={colSpan} role="status" aria-live="polite">
+            No results found.
+          </MessageCell>
         </tr>
       </tbody>
     );

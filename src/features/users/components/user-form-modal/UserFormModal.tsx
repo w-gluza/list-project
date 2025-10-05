@@ -49,7 +49,7 @@ export default function UserFormModal({
           : "Update the information for the existing user."
       }
       loading={mode === "edit" && isLoading}
-      error={mode === "edit" && error}
+      error={mode === "edit" && error ? "Something went wrong" : undefined}
     >
       {(mode === "create" || initial) && (
         <UserForm mode={mode} initialValues={initial} onClose={onClose} />

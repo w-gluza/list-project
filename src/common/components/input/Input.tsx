@@ -15,14 +15,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   css?: CSS;
 }
 
-const Wrapper = styled("label", { display: "grid", gap: 6 });
+const Wrapper = styled("div", { display: "grid", gap: 6 });
 
 const Row = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 });
 
-const LabelEl = styled("div", {
+const LabelEl = styled("label", {
   fontSize: "$sm",
   fontWeight: "$regular",
   color: "$dark1",
