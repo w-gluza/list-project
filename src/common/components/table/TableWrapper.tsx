@@ -12,9 +12,13 @@ interface TableWrapperProps {
 const Root = styled("div", {
   backgroundColor: "$white",
   borderRadius: "$radius-lg",
-  padding: "24px",
+  padding: "16px",
   overflow: "hidden",
   border: "1px solid $surface2",
+
+  "@media (min-width: 600px)": {
+    padding: "24px",
+  },
 });
 
 export const TableWrapper = ({ children, css }: TableWrapperProps) => {

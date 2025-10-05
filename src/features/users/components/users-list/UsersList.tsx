@@ -28,9 +28,9 @@ export default function UsersList({ onEditUser }: Props) {
           <TableRow>
             <TableHeaderCell>First Name</TableHeaderCell>
             <TableHeaderCell>Last Name</TableHeaderCell>
-            <TableHeaderCell>Age</TableHeaderCell>
             <TableHeaderCell>Country</TableHeaderCell>
-            <TableHeaderCell>Actions</TableHeaderCell>
+            <TableHeaderCell align="right">Age</TableHeaderCell>
+            <TableHeaderCell align="right">Actions</TableHeaderCell>
           </TableRow>
         </TableHead>
 
@@ -39,9 +39,9 @@ export default function UsersList({ onEditUser }: Props) {
             <TableRow key={u.id}>
               <TableCell>{u.firstName}</TableCell>
               <TableCell>{u.lastName}</TableCell>
-              <TableCell>{u.age}</TableCell>
               <TableCell>{u.country}</TableCell>
-              <TableCell>
+              <TableCell align="right">{u.age}</TableCell>
+              <TableCell align="right">
                 <Button
                   variant="secondary"
                   size="sm"
