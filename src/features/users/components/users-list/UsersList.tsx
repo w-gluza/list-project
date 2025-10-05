@@ -11,11 +11,11 @@ import {
   TableCell,
 } from "../../../../common/components";
 
-type Props = {
+interface UsersListProps {
   onEditUser: (user: User) => void;
-};
+}
 
-export default function UsersList({ onEditUser }: Props) {
+export default function UsersList({ onEditUser }: UsersListProps) {
   const { data: users, isLoading } = useUsers();
 
   return (

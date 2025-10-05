@@ -13,10 +13,10 @@ function toFormValues(user: User): UserFormValues {
   };
 }
 
-type UserFormModalProps = {
+interface UserFormModalProps {
   onClose: () => void;
   userId?: string;
-};
+}
 
 export default function UserFormModal({ userId, onClose }: UserFormModalProps) {
   const mode = userId ? "edit" : "create";
