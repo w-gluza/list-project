@@ -38,3 +38,29 @@ Thanks so much for taking the time to review my task. Even though the assignment
 | Deployment         | [Vercel](https://vercel.com/)                                                                                      |
 
 ---
+
+## ⚙️ Installation & Setup
+
+- **Clone the repository**
+  ```
+  git clone https://github.com/w-gluza/list-project.git
+  ```
+  ```
+  cd list-project
+  ```
+- **Install dependencies**
+
+  ```
+  npm install
+  ```
+
+- **Start the development server**
+
+  ```
+  npm run dev
+  ```
+
+- **Run tests**
+  ```
+  npx playwright test
+  ```
