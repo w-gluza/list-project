@@ -5,7 +5,13 @@ import { userSchema, type UserFormValues } from "../../validation/userSchema";
 import { usePost } from "../../../../common/methods/usePost";
 import { usePatch } from "../../../../common/methods/usePatch";
 import type { User } from "../../types/user";
-import { Button, Input, Form, Select } from "../../../../common/components";
+import {
+  Button,
+  Input,
+  Form,
+  Select,
+  FormActions,
+} from "../../../../common/components";
 
 interface UserFormProps {
   mode: "create" | "edit";
@@ -56,75 +62,69 @@ export default function UserForm({
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="country"
-        control={control}
-        render={({ field, fieldState }) => (
-          <Select
-            label="Country"
-            placeholder="Select country…"
-            value={field.value ?? ""}
-            onValueChange={field.onChange}
-            disabled={isSubmitting}
-            error={fieldState.error?.message}
-            items={[
-              { value: "UK", label: "UK" },
-              { value: "Ireland", label: "Ireland" },
-              { value: "US", label: "US" },
-              { value: "Other", label: "Other" },
-            ]}
-          />
-        )}
-      />
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="country"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Select
+              label="Country"
+              placeholder="Select country…"
+              value={field.value ?? ""}
+              onValueChange={field.onChange}
+              disabled={isSubmitting}
+              error={fieldState.error?.message}
+              items={[
+                { value: "UK", label: "UK" },
+                { value: "Ireland", label: "Ireland" },
+                { value: "US", label: "US" },
+                { value: "Other", label: "Other" },
+              ]}
+            />
+          )}
+        />
 
-      <Input
-        label="First name"
-        placeholder="First name"
-        autoComplete="given-name"
-        disabled={isSubmitting}
-        error={errors.firstName?.message}
-        {...register("firstName")}
-      />
+        <Input
+          label="First name"
+          placeholder="First name"
+          autoComplete="given-name"
+          disabled={isSubmitting}
+          error={errors.firstName?.message}
+          {...register("firstName")}
+        />
 
-      <Input
-        label="Last name"
-        placeholder="Last name"
-        autoComplete="family-name"
-        disabled={isSubmitting}
-        error={errors.lastName?.message}
-        {...register("lastName")}
-      />
+        <Input
+          label="Last name"
+          placeholder="Last name"
+          autoComplete="family-name"
+          disabled={isSubmitting}
+          error={errors.lastName?.message}
+          {...register("lastName")}
+        />
 
-      <Input
-        type="number"
-        inputMode="numeric"
-        label="Age"
-        placeholder="Age"
-        disabled={isSubmitting}
-        error={errors.age?.message}
-        {...register("age", { valueAsNumber: true })}
-      />
-
-      <div
-        style={{
-          display: "grid",
-          gap: 8,
-          gridTemplateColumns: "1fr 3fr",
-          paddingTop: 8,
-        }}
-      >
-        <Button variant="secondary" size="lg" type="button" onClick={onClose}>
-          Cancel
-        </Button>
-        <Button
-          size="lg"
-          disabled={isSubmitting || !isValid || isCreating || isEditing}
-          type="submit"
-        >
-          {mode === "create" ? "Create" : "Save"}
-        </Button>
-      </div>
-    </Form>
+        <Input
+          type="number"
+          inputMode="numeric"
+          label="Age"
+          placeholder="Age"
+          disabled={isSubmitting}
+          error={errors.age?.message}
+          {...register("age", { valueAsNumber: true })}
+        />
+        <FormActions>
+          <Button variant="secondary" size="lg" type="button" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button
+            size="lg"
+            disabled={isSubmitting || !isValid || isCreating || isEditing}
+            type="submit"
+          >
+            {mode === "create" ? "Create" : "Save"}
+          </Button>
+        </FormActions>
+      </Form>
+    </>
   );
 }

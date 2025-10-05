@@ -39,6 +39,7 @@ const Title = styled(Dialog.Title, {
   fontSize: "$lg",
   fontWeight: "$bold",
   color: "$black",
+  paddingBottom: "32px",
 });
 
 const VisuallyHidden = styled(Dialog.Description, {
@@ -87,7 +88,7 @@ export const Modal = ({
           <CloseX aria-label="Close">
             <CrossCircledIcon />
           </CloseX>
-          <div style={{ marginTop: 12 }}>{children}</div>
+          <div>{children}</div>
         </Content>
       </Dialog.Portal>
     </Dialog.Root>

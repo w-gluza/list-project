@@ -53,6 +53,7 @@ export default function UserFormModal({
       {mode === "edit" && error && (
         <p style={{ color: "$danger" }}>Failed to load user.</p>
       )}
+
       {(mode === "create" || initial) && (
         <UserForm mode={mode} initialValues={initial} onClose={onClose} />
       )}
