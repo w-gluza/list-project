@@ -74,7 +74,10 @@ const StyledButton = styled("button", {
       primary: {
         backgroundColor: "$black",
         color: "$white",
-        "&:hover:not(:disabled)": { backgroundColor: "$dark1" },
+        "&:hover:not(:disabled)": {
+          backgroundColor: "$black",
+          opacity: 0.8,
+        },
       },
       secondary: {
         backgroundColor: "$white",

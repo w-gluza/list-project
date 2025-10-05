@@ -112,13 +112,11 @@ const Item = styled(SelectPrimitive.Item, {
   },
 
   "&:hover": {
-    backgroundColor: "$accent",
-    color: "$white",
+    backgroundColor: "$surface2",
   },
 
   "&[data-highlighted='true']": {
-    backgroundColor: "$accent",
-    color: "$white",
+    backgroundColor: "$surface2",
   },
 });
 

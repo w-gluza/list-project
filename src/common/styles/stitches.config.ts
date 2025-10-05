@@ -19,7 +19,6 @@ export const { styled, css, globalCss, theme, createTheme } = createStitches({
 
       dark1: "#706D5C",
 
-      accent: "#01323399",
       danger: "#E14B4B", // Made out based on other hex colors
       deepGreen60: "#013233",
     },
