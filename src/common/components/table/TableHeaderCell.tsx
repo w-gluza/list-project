@@ -10,10 +10,12 @@ interface TableHeaderCellProps {
 }
 
 const Root = styled("th", {
+  fontSize: "$md",
+  lineHeight: "20px",
+  fontWeight: "$regular",
+  color: "$dark1",
   textAlign: "left",
-  fontWeight: 600,
-  color: "$gray600",
-  padding: "12px 16px",
+  padding: "10px 0px",
 });
 
 export const TableHeaderCell = ({ children, css }: TableHeaderCellProps) => {

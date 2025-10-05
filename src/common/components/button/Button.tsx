@@ -13,8 +13,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
   /** Size: "lg"=48px, "md"=40px, "sm"=32px. */
   size?: "lg" | "md" | "sm";
-  /** Corner radius: "sm"=6px, "lg"=pill. */
-  rounded?: "sm" | "lg";
+  /** Corner radius: "md"=8px, "full"=pill. */
+  rounded?: "md" | "full";
   /** Show busy state, disables interaction. */
   loading?: boolean;
   /** Test id for queries in tests. */
@@ -28,7 +28,7 @@ const StyledButton = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   gap: "8px",
-  fontWeight: 700,
+  fontWeight: "$bold",
   cursor: "pointer",
   lineHeight: 1,
   transition:
@@ -43,26 +43,32 @@ const StyledButton = styled("button", {
     size: {
       lg: {
         height: "48px",
-        padding: "0 20px",
-        fontSize: "16px",
+        padding: "0 24px",
+        fontSize: "$md",
         lineHeight: "20px",
+        fontFamily: "$primary",
       },
+
+      // Header Buttons
       md: {
         height: "40px",
         padding: "0 16px",
-        fontSize: "14px",
+        fontSize: "$sm",
         lineHeight: "18px",
+        fontFamily: "$primary",
       },
+      // Table Buttons
       sm: {
         height: "32px",
         padding: "0 12px",
-        fontSize: "14px",
+        fontSize: "$sm",
         lineHeight: "18px",
+        fontFamily: "$primary",
       },
     },
     rounded: {
-      sm: { borderRadius: "8px" },
-      lg: { borderRadius: "9999px" },
+      md: { borderRadius: "$radius-md" },
+      full: { borderRadius: "$radius-full" },
     },
     variant: {
       primary: {
@@ -94,7 +100,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "start",
       variant = "primary",
       size = "md",
-      rounded = "sm",
+      rounded = "md",
       loading = false,
       dataTestId,
       className,

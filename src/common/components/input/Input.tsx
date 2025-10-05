@@ -23,13 +23,13 @@ const Row = styled("div", {
 });
 
 const LabelEl = styled("div", {
-  fontSize: 14,
-  fontWeight: 600,
-  color: "$black",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  color: "$dark1",
 });
 
 const Message = styled("span", {
-  fontSize: 12,
+  fontSize: "$xs",
   minHeight: 16,
   lineHeight: 1.3,
 });
@@ -38,8 +38,8 @@ const StyledInput = styled("input", {
   width: "100%",
   height: 40,
   padding: "0 12px",
-  borderRadius: 8,
-  border: "1px solid $surface3",
+  borderRadius: "$radius-md",
+  border: "2px solid $surface3",
   backgroundColor: "$white",
   color: "$black",
   transition: "border-color 0.15s ease, background-color 0.15s ease",
@@ -50,7 +50,7 @@ const StyledInput = styled("input", {
   },
 
   "&[aria-invalid='true']": {
-    borderColor: "red",
+    borderColor: "$danger",
   },
 
   "&:disabled": {
@@ -81,7 +81,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <Message
               id={msgId}
               role={hasError ? "alert" : undefined}
-              css={{ color: hasError ? "red" : "$dark1" }}
+              css={{ color: hasError ? "$danger" : "$dark1" }}
             >
               {message}
             </Message>

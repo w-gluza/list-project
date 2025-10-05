@@ -23,7 +23,7 @@ export default function Users() {
     <>
       <Header>
         <Heading level={1}>User List</Heading>
-        <Button onClick={handleCreateUser} rounded="lg" icon={<PlusIcon />}>
+        <Button onClick={handleCreateUser} rounded="full" icon={<PlusIcon />}>
           Add User
         </Button>
       </Header>

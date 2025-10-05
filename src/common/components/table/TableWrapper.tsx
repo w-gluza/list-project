@@ -10,11 +10,11 @@ interface TableWrapperProps {
 }
 
 const Root = styled("div", {
-  backgroundColor: "white",
-  borderRadius: "12px",
-  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-  padding: "16px",
+  backgroundColor: "$white",
+  borderRadius: "$radius-lg",
+  padding: "24px",
   overflow: "hidden",
+  border: "1px solid $surface2",
 });
 
 export const TableWrapper = ({ children, css }: TableWrapperProps) => {

@@ -18,7 +18,7 @@ type Props = {
 export default function UsersList({ onEditUser }: Props) {
   const { data: users, error, isLoading } = useSWR<User[]>("/api/users");
 
-  if (error) return <p style={{ color: "red" }}>Failed to load users.</p>;
+  if (error) return <p style={{ color: "$danger" }}>Failed to load users.</p>;
   if (isLoading) return <p>Please wait. Loading users...</p>;
 
   return (

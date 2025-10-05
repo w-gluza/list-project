@@ -30,8 +30,8 @@ const Content = styled(Dialog.Content, {
   transform: "translate(-50%, -50%)",
   width: "min(512px, 92vw)",
   backgroundColor: "$white",
-  borderRadius: "$lg",
-  padding: "$lg",
+  borderRadius: "$radius-lg",
+  padding: "32px",
 });
 
 const Title = styled(Dialog.Title, {

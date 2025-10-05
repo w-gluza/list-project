@@ -37,13 +37,13 @@ const Row = styled("div", {
 });
 
 const LabelEl = styled("div", {
-  fontSize: 14,
-  fontWeight: 600,
-  color: "$black",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  color: "$dark1",
 });
 
 const Message = styled("span", {
-  fontSize: 12,
+  fontSize: "$xs",
   minHeight: 16,
   lineHeight: 1.3,
 });
@@ -52,8 +52,8 @@ const Trigger = styled(SelectPrimitive.Trigger, {
   width: "100%",
   height: 40,
   padding: "0 12px",
-  borderRadius: 8,
-  border: "1px solid $surface3",
+  borderRadius: "$radius-md",
+  border: "2px solid $surface3",
   backgroundColor: "$white",
   color: "$black",
   display: "inline-flex",
@@ -74,7 +74,7 @@ const Trigger = styled(SelectPrimitive.Trigger, {
 
   variants: {
     error: {
-      true: { borderColor: "red" },
+      true: { borderColor: "$danger" },
     },
   },
 });
@@ -82,7 +82,7 @@ const Trigger = styled(SelectPrimitive.Trigger, {
 const Content = styled(SelectPrimitive.Content, {
   backgroundColor: "$white",
   border: "1px solid $surface3",
-  borderRadius: 8,
+  borderRadius: "$radius-md",
   overflow: "hidden",
   minWidth: "var(--radix-select-trigger-width)",
   width: "var(--radix-select-trigger-width)",
@@ -94,7 +94,7 @@ const Viewport = styled(SelectPrimitive.Viewport, {
 });
 
 const Item = styled(SelectPrimitive.Item, {
-  fontSize: 14,
+  fontSize: "$sm",
   color: "$black",
   borderRadius: 6,
   display: "flex",
@@ -162,7 +162,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
             <Message
               id={msgId}
               role={hasError ? "alert" : undefined}
-              css={{ color: hasError ? "red" : "$dark1" }}
+              css={{ color: hasError ? "$danger" : "$dark1" }}
             >
               {message}
             </Message>

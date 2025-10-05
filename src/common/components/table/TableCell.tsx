@@ -10,10 +10,13 @@ interface TableCellProps {
 }
 
 const Root = styled("td", {
+  fontSize: "$md",
+  lineHeight: "20px",
+  fontWeight: "$regular",
   textAlign: "left",
-  fontWeight: 500,
   color: "$black",
-  padding: "12px 16px",
+
+  padding: "10px 0px",
 });
 
 export const TableCell = ({ children, css }: TableCellProps) => {

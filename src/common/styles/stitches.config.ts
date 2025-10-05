@@ -2,10 +2,14 @@ import { createStitches } from "@stitches/react";
 
 export const { styled, css, globalCss, theme, createTheme } = createStitches({
   theme: {
+    fonts: {
+      primary: '"DM Sans Variable", "DM Sans", sans-serif',
+      secondary: '"Passion One", sans-serif', // replace Champ
+    },
+
     colors: {
       white: "#FFFFFF",
       black: "#000000",
-      overlay: "#00000066",
 
       surface1: "#FAF9F2",
       surface2: "#F5F4ED",
@@ -14,9 +18,32 @@ export const { styled, css, globalCss, theme, createTheme } = createStitches({
       surface5: "#D4D2C4",
 
       dark1: "#706D5C",
-      dark2: "#8C8873",
 
       accent: "#01323399",
+      danger: "#E14B4B", // Made out based on other hex colors
+      deepGreen60: "#013233",
+    },
+
+    fontSizes: {
+      xs: "12px",
+      sm: "14px",
+      md: "16px",
+      lg: "18px",
+    },
+
+    fontWeights: {
+      light: "300",
+      regular: "400",
+      medium: "500",
+      bold: "700",
+    },
+
+    radii: {
+      "radius-sm": "4px",
+      "radius-md": "8px",
+      "radius-lg": "16px",
+      "radius-xl": "20px",
+      "radius-full": "9999px",
     },
   },
 });
@@ -33,7 +60,8 @@ export const globalStyles = globalCss({
   body: {
     margin: 0,
     padding: 0,
-    fontFamily: "system-ui, sans-serif",
+    fontFamily: "$primary",
+    fontWeight: "$regular",
     backgroundColor: "$surface1",
     color: "$dark1",
   },

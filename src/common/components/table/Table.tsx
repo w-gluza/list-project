@@ -12,8 +12,6 @@ interface TableProps {
 const Root = styled("table", {
   width: "100%",
   borderCollapse: "collapse",
-  fontSize: "14px",
-  lineHeight: 1.5,
 });
 
 export const Table = ({ children, css }: TableProps) => {
