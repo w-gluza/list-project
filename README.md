@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+## 📂 About & Project Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hi Team,
 
-Currently, two official plugins are available:
+Thanks so much for taking the time to review my task. Even though the assignment was self-contained, I approached it like a small part of a real app - so I put together a mini UI kit and a few reusable methods that I’d normally create in a production setup.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔗 **Deployed on Vercel:** [https://list-project-eight.vercel.app/](https://list-project-eight.vercel.app/)
+- 📦 **GitHub Repository:** [https://github.com/w-gluza/list-project](https://github.com/w-gluza/list-project)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧩 Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **List users** via `GET /api/users`
+- **Add user** via `POST /api/users`
+- **Edit user** via `PATCH /api/users/:id`
+- **Form validation** with schema-based rules
+- **Modal-based create/edit UI**
+- **Mini UI kit**
+- **Mock backend** (MSW)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Area               | Library                                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Framework          | [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript (strict)](https://www.typescriptlang.org/) |
+| Data fetching      | [SWR](https://swr.vercel.app/)                                                                                     |
+| Mock API           | [MSW (Mock Service Worker)](https://mswjs.io/)                                                                     |
+| Forms & validation | [React Hook Form](https://react-hook-form.com/) + [Yup](https://github.com/jquense/yup)                            |
+| E2E testing        | [Playwright](https://playwright.dev/)                                                                              |
+| Styling            | [Stitches](https://stitches.dev/) (CSS-in-JS) + [Radix UI Primitives](https://www.radix-ui.com/primitives)         |
+| Deployment         | [Vercel](https://vercel.com/)                                                                                      |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
