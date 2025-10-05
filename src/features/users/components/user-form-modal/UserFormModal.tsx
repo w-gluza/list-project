@@ -1,37 +1,26 @@
-import useSWR from "swr";
-import { fetcher } from "../../../../common/utils/fetcher";
+import { useUser } from "../../../hooks/useUser";
 import type { User } from "../../types/user";
 import type { UserFormValues } from "../../validation/userSchema";
 import UserForm from "../user-form/UserForm";
 import { Modal } from "../../../../common/components";
 
-function toFormValues(u: User): UserFormValues {
+function toFormValues(user: User): UserFormValues {
   return {
-    country: u.country,
-    firstName: u.firstName,
-    lastName: u.lastName,
-    age: u.age,
+    country: user.country,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    age: user.age,
   };
 }
 
 type UserFormModalProps = {
-  open: boolean;
   onClose: () => void;
   userId?: string;
 };
 
-export default function UserFormModal({
-  open,
-  onClose,
-  userId,
-}: UserFormModalProps) {
-  if (!open) return null;
-  const mode: "create" | "edit" = userId ? "edit" : "create";
-  const {
-    data: user,
-    isLoading,
-    error,
-  } = useSWR<User>(userId ? `/api/users/${userId}` : null, fetcher);
+export default function UserFormModal({ userId, onClose }: UserFormModalProps) {
+  const mode = userId ? "edit" : "create";
+  const { data: user, isLoading, isError } = useUser(userId);
 
   const initial =
     mode === "edit" && user
@@ -40,16 +29,16 @@ export default function UserFormModal({
 
   return (
     <Modal
-      open={open}
-      onOpenChange={(o) => !o && onClose()}
-      title={mode === "create" ? "Add user" : "Edit user"}
+      open
+      onOpenChange={(isOpen) => !isOpen && onClose()}
+      title={mode === "create" ? "Add User" : "Edit User"}
       ariaDescription={
         mode === "create"
           ? "Fill out the form to create a new user."
           : "Update the information for the existing user."
       }
-      loading={mode === "edit" && isLoading}
-      error={mode === "edit" && error ? "Something went wrong" : undefined}
+      loading={isLoading}
+      error={isError ? "Something went wrong" : undefined}
     >
       {(mode === "create" || initial) && (
         <UserForm mode={mode} initialValues={initial} onClose={onClose} />

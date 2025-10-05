@@ -30,11 +30,9 @@ export default function Users() {
       <Main>
         <UsersList onEditUser={handleEditUser} />
       </Main>
-      <UserFormModal
-        open={open}
-        userId={editingId}
-        onClose={() => setOpen(false)}
-      />
+      {open && (
+        <UserFormModal userId={editingId} onClose={() => setOpen(false)} />
+      )}
     </>
   );
 }

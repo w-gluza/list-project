@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import { useUsers } from "../../../hooks/useUsers";
 import type { User } from "../../types/user";
 import {
   Button,
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function UsersList({ onEditUser }: Props) {
-  const { data: users, isLoading } = useSWR<User[]>("/api/users");
+  const { data: users, isLoading } = useUsers();
 
   return (
     <TableWrapper>
@@ -36,17 +36,17 @@ export default function UsersList({ onEditUser }: Props) {
           isEmpty={!isLoading && users?.length === 0}
           colSpan={5}
         >
-          {(users ?? []).map((u) => (
-            <TableRow key={u.id}>
-              <TableCell>{u.firstName}</TableCell>
-              <TableCell>{u.lastName}</TableCell>
-              <TableCell>{u.country}</TableCell>
-              <TableCell align="right">{u.age}</TableCell>
+          {users?.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell>{user.firstName}</TableCell>
+              <TableCell>{user.lastName}</TableCell>
+              <TableCell>{user.country}</TableCell>
+              <TableCell align="right">{user.age}</TableCell>
               <TableCell align="right">
                 <Button
                   variant="secondary"
                   size="sm"
-                  onClick={() => onEditUser(u)}
+                  onClick={() => onEditUser(user)}
                 >
                   Edit
                 </Button>
