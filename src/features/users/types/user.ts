@@ -1,4 +1,5 @@
-export type Country = "UK" | "Ireland" | "US" | "Other";
+export const COUNTRIES = ["UK", "Ireland", "US", "Other"] as const;
+export type Country = (typeof COUNTRIES)[number];
 
 export const MIN_AGE_BY_COUNTRY: Record<Country, number> = {
   UK: 25,

@@ -5,7 +5,8 @@ import type { User } from "../../features/users/types/user";
 export const createUser = http.post("/api/users", async ({ request }) => {
   const body = (await request.json()) as Partial<User>;
 
-  // FIXME: Better validation should be implemented
+  // Basic validation
+  // In real app, we should use the same validation schema on the backend as on the frontend
   if (
     !body?.country ||
     !body?.firstName ||

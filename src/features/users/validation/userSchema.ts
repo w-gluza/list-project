@@ -1,12 +1,12 @@
 import * as yup from "yup";
-import { MIN_AGE_BY_COUNTRY, type Country } from "../types/user";
+import { MIN_AGE_BY_COUNTRY, COUNTRIES, type Country } from "../types/user";
 
 const NAME_UNICODE = /^[\p{L}\p{M}][\p{L}\p{M}\s'-]*$/u;
 
 export const userSchema = yup.object({
   country: yup
     .mixed<Country>()
-    .oneOf(["UK", "Ireland", "US", "Other"]) // FIXME: make it more dynamic
+    .oneOf(COUNTRIES)
     .required("Country is required"),
 
   firstName: yup
