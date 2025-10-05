@@ -1,4 +1,4 @@
-import { useUsers } from "../../../hooks/useUsers";
+import { useUsers } from "../../hooks/useUsers";
 import type { User } from "../../types/user";
 import {
   Button,

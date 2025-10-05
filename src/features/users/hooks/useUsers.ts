@@ -1,6 +1,6 @@
 import useSWR, { type KeyedMutator } from "swr";
-import type { User } from "../users/types/user";
-import { fetcher } from "../../common/utils/fetcher";
+import type { User } from "../types/user";
+import { fetcher } from "../../../common/utils/fetcher";
 
 type UseUsers = {
   data?: User[];

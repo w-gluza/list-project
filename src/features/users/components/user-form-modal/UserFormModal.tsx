@@ -1,4 +1,4 @@
-import { useUser } from "../../../hooks/useUser";
+import { useUser } from "../../hooks/useUser";
 import type { User } from "../../types/user";
 import type { UserFormValues } from "../../validation/userSchema";
 import UserForm from "../user-form/UserForm";
