@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { Dialog } from "radix-ui";
 import { styled } from "../../styles/stitches.config";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 
 export interface ModalProps {
   /** Whether the modal is open. */
@@ -18,7 +19,8 @@ export interface ModalProps {
 const Overlay = styled(Dialog.Overlay, {
   position: "fixed",
   inset: 0,
-  backgroundColor: "$overlay",
+  backgroundColor: "$deepGreen60",
+  opacity: 0.6,
 });
 
 const Content = styled(Dialog.Content, {
@@ -26,17 +28,16 @@ const Content = styled(Dialog.Content, {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "min(560px, 92vw)",
+  width: "min(512px, 92vw)",
   backgroundColor: "$white",
-  borderRadius: "12px",
-  padding: "20px",
-  boxShadow: "0 10px 38px rgba(22,23,24,0.35), 0 10px 20px rgba(22,23,24,0.2)",
+  borderRadius: "$lg",
+  padding: "$lg",
 });
 
 const Title = styled(Dialog.Title, {
   margin: 0,
-  fontSize: "18px",
-  fontWeight: 600,
+  fontSize: "$lg",
+  fontWeight: "$bold",
   color: "$black",
 });
 
@@ -55,13 +56,18 @@ const VisuallyHidden = styled(Dialog.Description, {
 const CloseX = styled(Dialog.Close, {
   all: "unset",
   position: "absolute",
-  top: 12,
-  right: 12,
-  fontSize: 18,
-  lineHeight: 1,
+  top: "-60px",
+  right: "-60px",
   cursor: "pointer",
-  color: "$dark1",
+  color: "$surface5",
+  svg: { width: "48px", height: "48px" },
   "&:hover": { color: "$black" },
+
+  "@media (max-width: 600px)": {
+    top: "12px",
+    right: "12px",
+    svg: { width: "32px", height: "32px" },
+  },
 });
 
 export const Modal = ({
@@ -78,7 +84,9 @@ export const Modal = ({
         <Content>
           <Title>{title}</Title>
           <VisuallyHidden>{ariaDescription}</VisuallyHidden>
-          <CloseX aria-label="Close">✕</CloseX>
+          <CloseX aria-label="Close">
+            <CrossCircledIcon />
+          </CloseX>
           <div style={{ marginTop: 12 }}>{children}</div>
         </Content>
       </Dialog.Portal>

@@ -14,15 +14,26 @@ export interface HeadingProps {
 const Root = styled("h2", {
   margin: 0,
   color: "$black",
-  fontWeight: 600,
   variants: {
     level: {
-      1: { fontSize: 32, lineHeight: 1.25, letterSpacing: "-0.01em" },
-      2: { fontSize: 28, lineHeight: 1.3, letterSpacing: "-0.005em" },
-      3: { fontSize: 24, lineHeight: 1.35 },
-      4: { fontSize: 20, lineHeight: 1.4 },
-      5: { fontSize: 16, lineHeight: 1.45 },
-      6: { fontSize: 14, lineHeight: 1.5 },
+      1: {
+        fontSize: 32,
+        lineHeight: "40px",
+        letterSpacing: "2%",
+        fontWeight: "$medium",
+        fontFamily: "$secondary",
+      },
+      2: {
+        fontSize: 24,
+        lineHeight: "32px",
+        letterSpacing: "0%",
+        fontWeight: "$bold",
+      },
+      // Just a placeholder, should be customized as needed for levels 3-6
+      3: { fontSize: 20, lineHeight: 1.5 },
+      4: { fontSize: 20, lineHeight: 1.5 },
+      5: { fontSize: 20, lineHeight: 1.5 },
+      6: { fontSize: 20, lineHeight: 1.5 },
     },
   },
 });
