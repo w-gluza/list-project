@@ -48,12 +48,9 @@ export default function UserFormModal({
           ? "Fill out the form to create a new user."
           : "Update the information for the existing user."
       }
+      loading={mode === "edit" && isLoading}
+      error={mode === "edit" && error}
     >
-      {mode === "edit" && isLoading && <p>Loading…</p>}
-      {mode === "edit" && error && (
-        <p style={{ color: "$danger" }}>Failed to load user.</p>
-      )}
-
       {(mode === "create" || initial) && (
         <UserForm mode={mode} initialValues={initial} onClose={onClose} />
       )}

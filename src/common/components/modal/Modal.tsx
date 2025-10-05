@@ -2,6 +2,7 @@ import { type ReactNode } from "react";
 import { Dialog } from "radix-ui";
 import { styled } from "../../styles/stitches.config";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
+import { ModalState } from "./ModalState";
 
 export interface ModalProps {
   /** Whether the modal is open. */
@@ -14,6 +15,10 @@ export interface ModalProps {
   ariaDescription: string;
   /** Modal content. */
   children: ReactNode;
+  /** Optional loading state (hides children) */
+  loading?: boolean;
+  /** Optional error message instead of modal content. */
+  error?: ReactNode;
 }
 
 const Overlay = styled(Dialog.Overlay, {
@@ -77,6 +82,8 @@ export const Modal = ({
   title,
   ariaDescription,
   children,
+  loading,
+  error,
 }: ModalProps) => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -88,7 +95,11 @@ export const Modal = ({
           <CloseX aria-label="Close">
             <CrossCircledIcon />
           </CloseX>
-          <div>{children}</div>
+          {loading || error ? (
+            <ModalState loading={loading} error={error} />
+          ) : (
+            <div>{children}</div>
+          )}
         </Content>
       </Dialog.Portal>
     </Dialog.Root>
